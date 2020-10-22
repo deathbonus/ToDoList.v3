@@ -24,10 +24,11 @@ public class Task {
 
     protected Task() {}
 
-    public Task(String name, String description) {
+    public Task(String name, String description, UUID id) {
         this.name = name;
         this.description = description;
         creationDate = LocalTime.now();
+        this.id = id;
     }
 
     public String getName() {
