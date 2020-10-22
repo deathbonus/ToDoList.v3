@@ -18,11 +18,17 @@ public class Task {
     private String name;
     private String description;
     public enum Urgency {VERY_LOW,LOW,MEDIUM,HIGH,VERY_HIGH}
-    Urgency urgency;
+    private Urgency urgency;
     private boolean isComplete;
-    private long taskListId;
+    private UUID taskListId;
 
     protected Task() {}
+
+    public Task(String name, String description) {
+        this.name = name;
+        this.description = description;
+        creationDate = LocalTime.now();
+    }
 
     public String getName() {
         return name;
@@ -30,6 +36,7 @@ public class Task {
 
     public void setName(String name) {
         this.name = name;
+        changeDate = LocalTime.now();
     }
 
     public String getDescription() {
@@ -38,15 +45,16 @@ public class Task {
 
     public void setDescription(String description) {
         this.description = description;
+        changeDate = LocalTime.now();
     }
 
-    public Urgency getUrgency() {
-        return urgency;
-    }
+//    public Urgency getUrgency() {
+//        return urgency;
+//    }
 
-    public void setUrgency(Urgency urgency) {
-        this.urgency = urgency;
-    }
+//    public void setUrgency(Urgency urgency) {
+//        this.urgency = urgency;
+//    }
 
     public boolean isComplete() {
         return isComplete;
@@ -56,11 +64,23 @@ public class Task {
         isComplete = !isComplete;
     }
 
-    public long getTaskListId() {
+    public UUID getTaskListId() {
         return taskListId;
     }
 
-    public void setTaskListId(long taskListId) {
+    public void setTaskListId(UUID taskListId) {
         this.taskListId = taskListId;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public LocalTime getCreationDate() {
+        return creationDate;
+    }
+
+    public LocalTime getChangeDate() {
+        return changeDate;
     }
 }
